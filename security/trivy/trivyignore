@@ -1,0 +1,10 @@
+# Trivy ignore file.
+# List CVE IDs here only after you have reviewed them and consciously accepted
+# the risk (for example, an upstream base-image CVE with no fix available yet).
+# Document the reason and a review date next to each entry so the acceptance is
+# revisited. Example:
+#
+#   CVE-2024-XXXXX  # no upstream fix as of 2026-07; low exploitability; review 2026-10
+#
+# Keep this file small. An empty ignore file means every HIGH/CRITICAL finding is
+# surfaced, which is the safe default.

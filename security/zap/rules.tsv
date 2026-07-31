@@ -1,0 +1,14 @@
+# OWASP ZAP baseline rule configuration.
+# Format:  <ruleId> <TAB> IGNORE|WARN|FAIL <TAB> optional comment
+# The nginx proxy sets HSTS, CSP, X-Frame-Options and X-Content-Type-Options,
+# so the FAIL rules below should pass, which confirms the hardening end to end.
+
+10096	IGNORE	Timestamp disclosure - noisy, low value on SPA bundles
+10027	IGNORE	Information disclosure - suspicious comments in minified JS
+10015	WARN	Incomplete or no cache-control header
+10035	FAIL	Strict-Transport-Security header not set
+10038	FAIL	Content Security Policy header not set
+10020	FAIL	Missing anti-clickjacking header (X-Frame-Options / frame-ancestors)
+10021	FAIL	X-Content-Type-Options header missing
+10063	WARN	Permissions policy header not set
+90004	WARN	Insufficient site isolation against Spectre

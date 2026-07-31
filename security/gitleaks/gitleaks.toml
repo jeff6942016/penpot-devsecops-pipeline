@@ -1,0 +1,29 @@
+title = "Penpot DevSecOps gitleaks config"
+
+# Start from gitleaks' built-in rule set, then add Penpot-specific rules.
+[extend]
+useDefault = true
+
+[[rules]]
+id = "penpot-secret-key"
+description = "Penpot secret key assigned a real-looking value"
+regex = '''(?i)PENPOT_SECRET_KEY\s*[:=]\s*['"]?[A-Za-z0-9/+=_-]{16,}['"]?'''
+tags = ["penpot", "secret"]
+
+[[rules]]
+id = "hardcoded-db-or-cache-password"
+description = "Hardcoded database or Redis password"
+regex = '''(?i)(POSTGRES_PASSWORD|REDIS_PASSWORD|PENPOT_DATABASE_PASSWORD)\s*[:=]\s*['"]?[^\s'"#]{6,}['"]?'''
+tags = ["password"]
+
+# Do not flag documented placeholders or example/templating files.
+[allowlist]
+description = "Ignore documented placeholders and example templates"
+regexes = [
+  '''__CHANGE_ME__''',
+  '''(?i)change_me''',
+]
+paths = [
+  '''deploy/\.env\.example''',
+  '''.*README\.md''',
+]
