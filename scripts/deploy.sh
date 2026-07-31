@@ -36,7 +36,7 @@ EOF
 # TLS material (self-signed for the local test environment).
 if [ ! -f certs/penpot.crt ]; then
   echo "Generating TLS certificate..."
-  ../scripts/gen-certs.sh "$PENPOT_HOST"
+bash ../scripts/gen-certs.sh "$PENPOT_HOST"
 fi
 
 echo "Pulling pinned images and starting the stack..."
